@@ -31,6 +31,7 @@ TESTCASES += testcases/fix.o
 TESTCASES += testcases/unary.o
 TESTCASES += testcases/functions.o
 TESTCASES += testcases/type_traits.o
+TESTCASES += testcases/hash.o
 
 all: $(TARGET)
 
