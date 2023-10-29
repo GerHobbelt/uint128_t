@@ -544,6 +544,14 @@ T & operator%=(T & lhs, const uint128_t & rhs){
     return lhs = static_cast <T> (uint128_t(lhs) % rhs);
 }
 
+template<> struct std::hash<uint128_t>{
+    size_t operator() (const uint128_t& rhs) const noexcept{
+        uint64_t max = rhs.upper() > rhs.lower() ? rhs.upper():rhs.lower();
+        uint64_t min = rhs.upper() < rhs.upper() ? rhs.upper():rhs.lower();
+        return min + ((max - min) >> 1);
+    }
+};
+
 // IO Operator
 UINT128_T_EXTERN std::ostream & operator<<(std::ostream & stream, const uint128_t & rhs);
 #endif
